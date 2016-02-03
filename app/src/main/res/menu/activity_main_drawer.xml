@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/FlagsList"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="All the Flags" />
+        <item
+            android:id="@+id/IO"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="International Organizations" />
+        <item
+            android:id="@+id/PlayGames"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Play Games!" />
+
+        <item android:title="Countries Flags's by continents">
+            <menu>
+                <item
+                    android:id="@+id/Africa"
+                    android:icon="@drawable/ic_menu_share"
+                    android:title="Africa" />
+                <item
+                    android:id="@+id/Asia"
+                    android:icon="@drawable/ic_menu_slideshow"
+                    android:title="Asia" />
+
+                <item
+                    android:id="@+id/Europe"
+                    android:icon="@drawable/ic_menu_slideshow"
+                    android:title="Europ" />
+                <item
+                    android:id="@+id/NAmerica"
+                    android:icon="@drawable/ic_menu_slideshow"
+                    android:title="North America" />
+                <item
+                    android:id="@+id/SAmerica"
+                    android:icon="@drawable/ic_menu_slideshow"
+                    android:title="South America" />
+                <item
+                    android:id="@+id/Oceana"
+                    android:icon="@drawable/ic_menu_slideshow"
+                    android:title="Oceana" />
+            </menu>
+        </item>
+
+    </group>
+    <item android:title="Communicate and Feedback">
+        <menu>
+            <item
+                android:id="@+id/E_mail"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Send an Email" />
+            <item
+                android:id="@+id/Address"
+                android:icon="@drawable/ic_menu_send"
+                android:title="My current Address" />
+        </menu>
+    </item>
+
+</menu>
