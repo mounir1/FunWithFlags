@@ -2,9 +2,12 @@ package com.apps.mounir.funwithflags;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 
 import java.util.ArrayList;
@@ -17,13 +20,19 @@ import java.util.List;
  */
 public class MyAdapter extends RecyclerView.Adapter<ViewHolder> {
 
+    Context c;
     private final LayoutInflater mInflater;
     private final List<Flag> mModels;
+    private static String ListType;
 
-    public MyAdapter(Context context, List<Flag> models) {
+    public MyAdapter(Context context, List<Flag> models, String type) {
         mInflater = LayoutInflater.from(context);
         mModels = new ArrayList<>(models);
+        this.c = context;
+        this.ListType = type;
     }
+
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -34,7 +43,7 @@ public class MyAdapter extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Flag model = mModels.get(position);
-        holder.bind(model,position);
+        holder.bind(c, model, position);
     }
 
     @Override
@@ -92,4 +101,6 @@ public class MyAdapter extends RecyclerView.Adapter<ViewHolder> {
         mModels.add(toPosition, model);
         notifyItemMoved(fromPosition, toPosition);
     }
+
 }
+

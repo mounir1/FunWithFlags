@@ -5,7 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    android:background="#ffff"
+    android:background="#fccf"
     android:gravity="center_vertical"
     android:measureWithLargestChild="true">
 
@@ -18,11 +18,10 @@
         android:text="001"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/country"
         android:layout_width="75dp"
         android:layout_height="60dp"
-        android:onClick="ImageInfo"
         android:layout_margin="10dp"
         android:src="@drawable/_algeria" />
 

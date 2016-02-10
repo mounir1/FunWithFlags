@@ -11,6 +11,10 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="International Organizations" />
         <item
+            android:id="@+id/Territories"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Territories " />
+        <item
             android:id="@+id/PlayGames"
             android:icon="@drawable/ic_menu_manage"
             android:title="Play Games!" />

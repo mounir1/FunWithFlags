@@ -12,6 +12,11 @@ public class Country extends Continents {
     private Flag flagImage;
     private String Currency;
     private String Religion;
+    private String CapitalCity;
+    private String Population;
+    private String Area;
+    private String PhoneCode;
+    private boolean isinDependent = true;
 
 
     public Country() {
@@ -19,6 +24,11 @@ public class Country extends Continents {
     }
 
     public Country(String name) {
+        this.Name = name;
+    }
+
+    public Country(String name, boolean isdependent) {
+        this.isinDependent = isdependent;
         this.Name = name;
     }
 
@@ -76,5 +86,45 @@ public class Country extends Continents {
 
     public void setReligion(String religion) {
         Religion = religion;
+    }
+
+    public String getContinentName() {
+        return super.getName();
+    }
+
+    public void setContinent(String continent) {
+        Continent = continent;
+    }
+
+    public String getCapitalCity() {
+        return CapitalCity;
+    }
+
+    public void setCapitalCity(String capitalCity) {
+        CapitalCity = capitalCity;
+    }
+
+    public String getPopulation() {
+        return Population;
+    }
+
+    public void setPopulation(String population) {
+        Population = population;
+    }
+
+    public String getArea() {
+        return Area;
+    }
+
+    public void setArea(String area) {
+        Area = area;
+    }
+
+    public String getPhoneCode() {
+        return PhoneCode;
+    }
+
+    public void setPhoneCode(String phoneCode) {
+        PhoneCode = phoneCode;
     }
 }

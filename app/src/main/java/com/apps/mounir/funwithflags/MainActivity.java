@@ -21,8 +21,9 @@ public class MainActivity extends AppCompatActivity
 
     public static final String Extra = "Extra";
 
-    public static final String AllFlags = "All The Flags";
+    public static final String AllFlags = "All The IOFlags";
     public static final String IOFlags = "International Organizations";
+    public static final String Territories = "Territories";
     public static final String AfroFlags = "African Countries";
     public static final String EuroFlags = "Europe Countries";
     public static final String AsiaFlags = "Asian Countries";
@@ -32,17 +33,19 @@ public class MainActivity extends AppCompatActivity
     protected String[] to = {"mounir1badi@gmail.com", "mounir1badi@hotmail.com"};
 //    private Firebase mref;
 
-    public static Continents Africa = new Continents("Africa", 1, "The Mother of the World");
+    public static Continents Africa = new Continents("Africa", 1, "The Mother of the World middle of the Earth (30,370,000 sq km) comprises 54 countries. It is the hottest continent and home of the world's largest desert, the Sahara, occupying the 25% of the total area of Africa.");
 
-    public static Continents Europe = new Continents("Europe", 2, "The Old Continent");
+    public static Continents Europe = new Continents("Europe", 2, "The Old Continent Middle North  (10,180,000 sq km) comprises 51 countries. It is the most developed economically continent with the European Union as the biggest economic and political union in the world.");
 
-    public static Continents Asia = new Continents("Asia", 3, "East North the most Populated !");
+    public static Continents Asia = new Continents("Asia", 3, "East the most Populated !  (43,820,000 sq km) includes 50 countries, and it is the most populated continent, the 60% of the total population of the Earth live here.");
 
-    public static Continents NorthAmerica = new Continents("North America", 4, "North west ");
+    public static Continents NorthAmerica = new Continents("North America", 4, "North west (24,490,000 sq km) includes 23 countries led by the USA as the largest economy in the world.");
 
-    public static Continents SouthAmerica = new Continents("South America", 5, "The Lung of earth");
+    public static Continents SouthAmerica = new Continents("South America", 5, "South West The Lung of earth  (17,840,000 sq km) comprises 12 countries. Here is located the largest forest, the Amazon rainforest, which covers 30% of the South America total area.");
 
-    public static Continents Oceana = new Continents();
+    public static Continents Oceana = new Continents("South East",6,"South East of the world (9,008,500 sq km) includes 14 countries. It is the least populated continent after Antarctica, only 0.3% of the total Earth population live here. ");
+
+    public static Continents Antarctica = new Continents("Antarctica",7,"(13,720,000 sq km) is the coldest continent in the world, completely covered with ice. There are no permanent inhabitants, except of scientists maintaining research stations in Antarctica.");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +123,12 @@ public class MainActivity extends AppCompatActivity
                 startActivity(MenuIntent);
                 break;
             }
+            case R.id.Territories: {
+                MenuIntent = new Intent(this, FlagList.class);
+                MenuIntent.putExtra(Extra,Territories );
+                startActivity(MenuIntent);
+                break;
+            }
             case R.id.Europe: {
                 MenuIntent = new Intent(this, FlagList.class);
                 MenuIntent.putExtra(Extra, EuroFlags);
@@ -146,7 +155,7 @@ public class MainActivity extends AppCompatActivity
             }
             case R.id.SAmerica: {
                 MenuIntent = new Intent(this, FlagList.class);
-                MenuIntent.putExtra(Extra, NAmerica);
+                MenuIntent.putExtra(Extra, SAmerica);
                 startActivity(MenuIntent);
                 break;
             }

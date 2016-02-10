@@ -22,35 +22,21 @@ public class MainFragment extends Fragment implements SearchView.OnQueryTextList
     protected static int AllFlags = 400;
 
 
-    String[] Numbers = new String[AllFlags];
+    static String[] Numbers = new String[AllFlags];
+    public static ArrayList<Flag> FLAGS = new ArrayList<>();
+    public static ArrayList<String> FlagsName = new ArrayList<>();
+    public static ArrayList<Integer> FlagIds = new ArrayList<>();
+    public static ArrayList<Integer> Locations = new ArrayList<>();
 
-    public ArrayList<String> FlagsName = new ArrayList<>();
-    public ArrayList<Integer> FlagIds = new ArrayList<>();
+    int[] AfricanFlagsIds = AFRICA.Africa;
+    int[] IOFlagsIds = IOFlags.IO;
+    int[] EuroFlagIds = EUROPE.Europe;
+    int[] AsiaFlagIds = ASIA.Asia;
+    int[] NAmericaFlagIds = NAmerica.NAmerica;
+    int[] SAmericaFlagIds = SouthAmerica.SAmerica;
+    int[] OceanaFlagIds = Oceana.Oceana;
 
-    int[] AfricanFlagsIds = Flags.Africa;
-    String[] AfricanFlagsName = new String[AfricanFlagsIds.length];
-
-
-    int[] IOFlagsIds = Flags.IO;
-    String[] IOFlagsName = new String[IOFlagsIds.length];
-
-    int[] EuroFlagIds = Flags.Europe;
-    String[] EuroFlagsName = new String[EuroFlagIds.length];
-
-    int[] AsiaFlagIds = Flags.Asia;
-    String[] AsiaFlagName = new String[AsiaFlagIds.length];
-
-    int[] NAmericaFlagIds = Flags.NAmerica;
-    String[] NAmericaFlagName = new String[NAmericaFlagIds.length];
-
-
-    int[] SAmericaFlagIds = Flags.SAmerica;
-    String[] SAmericaFlagName = new String[SAmericaFlagIds.length];
-
-    int[] OceanaFlagIds = Flags.Oceana;
-    String[] OceanaFlagName = new String[OceanaFlagIds.length];
-
-    Field[] ID_Fields = R.drawable.class.getFields();
+    static Field[] ID_Fields = R.drawable.class.getFields();
 
     public ArrayList<Flag> FlagsList = new ArrayList<>();
 
@@ -60,18 +46,78 @@ public class MainFragment extends Fragment implements SearchView.OnQueryTextList
 
     private static String Type;
 
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setHasOptionsMenu(true);
+        if (FlagIds.size() == 0)
+            getAllFlagNames();
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        switch (Type) {
 
+            case MainActivity.Territories: {
+                setTerritories();
+                break;
+            }
+            case MainActivity.AllFlags: {
+
+                setAllFlags();
+                break;
+            }
+            case MainActivity.IOFlags: {
+                setIO();
+                break;
+            }
+            case MainActivity.AsiaFlags: {
+                setAsian();
+                break;
+            }
+            case MainActivity.EuroFlags: {
+                setEurope();
+                break;
+            }
+            case MainActivity.AfroFlags: {
+                setAfrica();
+                break;
+            }
+            case MainActivity.OceanaFlags: {
+                setOceana();
+                break;
+            }
+            case MainActivity.NAmerica: {
+                setNAmerica();
+                break;
+            }
+            case MainActivity.SAmerica: {
+                setSAmerica();
+                break;
+            }
+        }
+        mAdapter = new MyAdapter(getActivity(), FlagsList, Type);
+        mRecyclerView.setAdapter(mAdapter);
+        //if (FlagsList.size() != AllFlags)
+        for (Flag flag : FlagsList)
+            if (FLAGS.contains(flag))
+                continue;
+            else
+                FLAGS.add(flag);
+        //FLAGS.addAll(FlagsList);
+        //FlagsList.clear();
+    }
     public static MainFragment newInstance(String type) {
         Type = type;
         return new MainFragment();
     }
 
-    public void getAllFlagNames() {
+    public static void getAllFlagNames() {
         for (int i = 0; i < ID_Fields.length; i++) {
             try {
                 if (ID_Fields[i].getName().startsWith("_")) {
-                    FlagIds.add(ID_Fields[i].getInt(null));
-                    FlagsName.add(ID_Fields[i].getName());
+                    if (ID_Fields[i].getName().startsWith("_location")) {
+                        Locations.add(ID_Fields[i].getInt(null));
+                    } else {
+                        FlagIds.add(ID_Fields[i].getInt(null));
+                        FlagsName.add(ID_Fields[i].getName());
+                    }
                 } else
                     continue;
             } catch (Exception e) {
@@ -112,7 +158,7 @@ public class MainFragment extends Fragment implements SearchView.OnQueryTextList
         for (int i = 0; i < IOFlagsIds.length; i++) {
             int ID = IOFlagsIds[i];
             String name = FlagsName.get(FlagIds.indexOf(IOFlagsIds[i]));
-            flag = new Flag(name, ID);
+            flag = new Flag(name, ID, false, IOFlags.IOStories[i]);
             FlagsList.add(flag);
         }
     }
@@ -171,8 +217,21 @@ public class MainFragment extends Fragment implements SearchView.OnQueryTextList
             FlagsList.add(flag);
         }
     }
+
+    private void setTerritories() {
+
+        for (int i = 0; i < Teritories.Territories.length; i++) {
+            int ID = Teritories.Territories[i];
+            String name = FlagsName.get(FlagIds.indexOf(ID));
+            Country country = new Country(name, false);
+            Flag flag = new Flag(name, ID, country, MainActivity.Antarctica);
+            FlagsList.add(flag);
+        }
+    }
+
     @Override
     public boolean onQueryTextChange(String query) {
+
         final List<Flag> filteredModelList = filter(FlagsList, query);
         mAdapter.animateTo(filteredModelList);
         mRecyclerView.scrollToPosition(0);
@@ -196,6 +255,7 @@ public class MainFragment extends Fragment implements SearchView.OnQueryTextList
         }
         return filteredModelList;
     }
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.listmenu, menu);
@@ -214,52 +274,9 @@ public class MainFragment extends Fragment implements SearchView.OnQueryTextList
         return view;
     }
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        setHasOptionsMenu(true);
-        getAllFlagNames();
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        System.out.println("FLAG TYPE: " + Type);
-        switch (Type) {
 
-            case MainActivity.AllFlags: {
 
-                setAllFlags();
-                break;
-            }
-            case MainActivity.IOFlags: {
-                setIO();
-                break;
-            }
-            case MainActivity.AsiaFlags: {
-                setAsian();
-                break;
-            }
-            case MainActivity.EuroFlags: {
-                setEurope();
-                break;
-            }
-            case MainActivity.AfroFlags: {
-                setAfrica();
-                break;
-            }
-            case MainActivity.OceanaFlags: {
-                setOceana();
-                break;
-            }
-            case MainActivity.NAmerica: {
-                setNAmerica();
-                break;
-            }
-            case MainActivity.SAmerica: {
-                setSAmerica();
-                break;
-            }
-        }
-        mAdapter = new MyAdapter(getActivity(), FlagsList);
-        mRecyclerView.setAdapter(mAdapter);
-    }
+
 
 }
 
