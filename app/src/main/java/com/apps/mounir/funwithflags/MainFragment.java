@@ -146,7 +146,7 @@ public class MainFragment extends Fragment implements SearchView.OnQueryTextList
             int ID = SAmericaFlagIds[i];
             String name = FlagsName.get(FlagIds.indexOf(SAmericaFlagIds[i]));
             Country country = new Country(name);
-            Flag flag = new Flag(name, ID, country, MainActivity.SouthAmerica);
+            Flag flag = new Flag(name, ID, country, PlanetEarth.SouthAmerica);
 
             FlagsList.add(flag);
         }
@@ -169,7 +169,7 @@ public class MainFragment extends Fragment implements SearchView.OnQueryTextList
             int ID = AfricanFlagsIds[i];
             String name = FlagsName.get(FlagIds.indexOf(AfricanFlagsIds[i]));
             Country country = new Country(name);
-            Flag flag = new Flag(name, ID, country, MainActivity.Africa);
+            Flag flag = new Flag(name, ID, country, PlanetEarth.Africa);
             FlagsList.add(flag);
         }
     }
@@ -180,7 +180,7 @@ public class MainFragment extends Fragment implements SearchView.OnQueryTextList
             int ID = AsiaFlagIds[i];
             String name = FlagsName.get(FlagIds.indexOf(AsiaFlagIds[i]));
             Country country = new Country(name);
-            Flag flag = new Flag(name, ID, country, MainActivity.Asia);
+            Flag flag = new Flag(name, ID, country, PlanetEarth.Asia);
             FlagsList.add(flag);
 
         }
@@ -192,7 +192,7 @@ public class MainFragment extends Fragment implements SearchView.OnQueryTextList
             int ID = NAmericaFlagIds[i];
             String name = FlagsName.get(FlagIds.indexOf(NAmericaFlagIds[i]));
             Country country = new Country(name);
-            Flag flag = new Flag(name, ID, country, MainActivity.NorthAmerica);
+            Flag flag = new Flag(name, ID, country, PlanetEarth.NorthAmerica);
             FlagsList.add(flag);
         }
     }
@@ -202,7 +202,7 @@ public class MainFragment extends Fragment implements SearchView.OnQueryTextList
             int ID = OceanaFlagIds[i];
             String name = FlagsName.get(FlagIds.indexOf(OceanaFlagIds[i]));
             Country country = new Country(name);
-            Flag flag = new Flag(name, ID, country, MainActivity.Oceana);
+            Flag flag = new Flag(name, ID, country, PlanetEarth.Oceana);
             FlagsList.add(flag);
         }
     }
@@ -213,7 +213,7 @@ public class MainFragment extends Fragment implements SearchView.OnQueryTextList
             int ID = EuroFlagIds[i];
             String name = FlagsName.get(FlagIds.indexOf(EuroFlagIds[i]));
             Country country = new Country(name);
-            Flag flag = new Flag(name, ID, country, MainActivity.Europe);
+            Flag flag = new Flag(name, ID, country, PlanetEarth.Europe);
             FlagsList.add(flag);
         }
     }
@@ -224,7 +224,7 @@ public class MainFragment extends Fragment implements SearchView.OnQueryTextList
             int ID = Teritories.Territories[i];
             String name = FlagsName.get(FlagIds.indexOf(ID));
             Country country = new Country(name, false);
-            Flag flag = new Flag(name, ID, country, MainActivity.Antarctica);
+            Flag flag = new Flag(name, ID, country, PlanetEarth.Antarctica);
             FlagsList.add(flag);
         }
     }

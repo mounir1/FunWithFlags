@@ -4,10 +4,63 @@
     android:layout_height="match_parent"
     android:padding="5dp">
 
-    <ImageView
-        android:layout_width="90dp"
-        android:layout_height="70dp"
+
+    <TextView
+        android:id="@+id/textcountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:id="@+id/grid_image"/>
+        android:layout_margin="20dp"
+        android:text="Country"
+        android:textSize="20sp" />
+
+
+    <!--<ScrollView-->
+    <!--android:id="@+id/scrollView"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_centerVertical="true">-->
+
+    <TableLayout
+        android:id="@+id/TableGrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textcountry"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp">
+
+
+    </TableLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="200dp"
+        android:layout_height="10dp"
+        android:layout_below="@+id/TableGrid"
+        android:layout_centerHorizontal="true"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="1" />
+
+    <!--<ProgressBar-->
+    <!--style="?android:attr/progressBarStyleHorizontal"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:id="@+id/progressBar2"-->
+    <!--android:layout_alignTop="@+id/textcountry"-->
+    <!--android:layout_centerHorizontal="true" />-->
+
+    <TextView
+        android:id="@+id/progresstext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/progressBar"
+        android:layout_centerHorizontal="true"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <!--</ScrollView>-->
 
 </RelativeLayout>

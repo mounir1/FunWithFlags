@@ -9,11 +9,11 @@ public class Flag extends Country {
     private String Name;
     private int ImagId;
     private Country country;
-    private Continents continent;
+    private com.apps.mounir.funwithflags.Continent continent;
     public boolean isCountry = true;
     private String IOStory;
 
-    public Flag(String name, int img, Country country, Continents continent) {
+    public Flag(String name, int img, Country country, com.apps.mounir.funwithflags.Continent continent) {
 
         this.Name = name;
         this.ImagId = img;
@@ -63,11 +63,11 @@ public class Flag extends Country {
         this.country = country;
     }
 
-    public Continents getContinent() {
+    public com.apps.mounir.funwithflags.Continent getContinent() {
         return this.continent;
     }
 
-    public void setContinent(Continents continent) {
+    public void setContinent(com.apps.mounir.funwithflags.Continent continent) {
         this.continent = continent;
     }
 

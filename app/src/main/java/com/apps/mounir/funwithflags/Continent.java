@@ -3,17 +3,17 @@ package com.apps.mounir.funwithflags;
 /**
  * Created by mounir on 27.01.2016.
  */
-public class Continents extends PlanetEarth {
+public class Continent extends PlanetEarth {
     private String Name;
     private int ID;
     private String Story;
 
-    public Continents() {
+    public Continent() {
 
     }
 
 
-    public Continents(String name, int id, String story) {
+    public Continent(String name, int id, String story) {
         Name = name;
         ID = id;
         Story = story;

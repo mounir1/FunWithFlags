@@ -1,11 +1,9 @@
 package com.apps.mounir.funwithflags;
 
-import android.widget.ImageButton;
-
 /**
  * Created by mounir on 27.01.2016.
  */
-public class Country extends Continents {
+public class Country extends Continent {
 
     private String Name;
     private String Continent;
@@ -24,6 +22,7 @@ public class Country extends Continents {
     }
 
     public Country(String name) {
+
         this.Name = name;
     }
 

@@ -7,7 +7,7 @@ import java.util.Comparator;
 /**
  * Created by mounir on 06.02.2016.
  */
-public class AFRICA {
+public class AFRICA  {
 
     public static int[] Africa = {
             R.drawable._algeria,
