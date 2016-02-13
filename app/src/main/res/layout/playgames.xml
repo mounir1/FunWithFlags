@@ -2,125 +2,177 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:baselineAligned="true"
-    android:gravity="top|center_horizontal"
-    android:orientation="vertical">
+    android:background="@color/common_action_bar_splitter"
+    >
 
-
-    <RelativeLayout
-        android:id="@+id/Games"
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:visibility="visible">
+        android:layout_margin="20dp">
 
-        <Button
-            android:id="@+id/hanging"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="10dp"
-            android:background="@drawable/games_btn"
-            android:onClick="GameHandler"
-            android:padding="10dp"
-            android:text="Hanging Man Game"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/memory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/hanging"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="10dp"
-            android:background="@drawable/games_btn"
-            android:onClick="GameHandler"
-            android:padding="10dp"
-            android:text="Memory Game"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/matching"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/memory"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="10dp"
-            android:background="@drawable/games_btn"
-            android:onClick="GameHandler"
-            android:padding="10dp"
-            android:text="Matching Game"
-            android:textAllCaps="false" />
-
-
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:id="@+id/Selector"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Games"
-        android:layout_margin="20dp"
-        android:visibility="visible">
-
-        <TextView
-            android:id="@+id/select"
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="Select Continents"
-            android:textSize="20sp" />
+            android:layout_height="wrap_content">
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/select" />
-    </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/Games"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:visibility="visible">
 
-    <RelativeLayout
-        android:id="@+id/Difficulties"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Selector"
-        android:visibility="gone">
+                <Button
+                    android:id="@+id/hanging"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/games_btn"
+                    android:onClick="GameHandler"
+                    android:padding="10dp"
+                    android:text="Hanging Man Game"
+                    android:textAllCaps="false" />
 
-        <Button
-            android:id="@+id/button_easy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/matchgame_btn"
-            android:onClick="DifficultyHandler"
-            android:text="Easy"
-            android:textAllCaps="false" />
+                <Button
+                    android:id="@+id/memory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/hanging"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/games_btn"
+                    android:onClick="GameHandler"
+                    android:padding="10dp"
+                    android:text="Memory Game"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/matching"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/memory"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/games_btn"
+                    android:onClick="GameHandler"
+                    android:padding="10dp"
+                    android:text="Matching Game"
+                    android:textAllCaps="false" />
 
 
-        <Button
-            android:id="@+id/Normal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/button_easy"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
-            android:background="@drawable/matchgame_btn"
-            android:onClick="DifficultyHandler"
-            android:text="Normal"
-            android:textAllCaps="false" />
+            </RelativeLayout>
 
-        <Button
-            android:id="@+id/Hard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/Normal"
-            android:layout_margin="10dp"
-            android:background="@drawable/matchgame_btn"
-            android:onClick="DifficultyHandler"
-            android:text="Hard"
-            android:textAllCaps="false" />
 
-    </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/CheckboXes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Games"
+                android:layout_margin="20dp"
+                android:background="#0fc">
+
+
+                <CheckBox
+                    android:id="@+id/afric"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:clickable="true"
+                    android:text="Africa" />
+
+                <CheckBox
+                    android:id="@+id/asi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/afric"
+                    android:checked="true"
+                    android:text="Asia" />
+
+                <CheckBox
+                    android:id="@+id/lamericdenord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/asi"
+                    android:checked="true"
+                    android:text="North America" />
+
+
+                <CheckBox
+                    android:id="@+id/loeurope"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_below="@id/lamericdenord"
+                    android:checked="true"
+                    android:text="Europe" />
+
+                <CheckBox
+                    android:id="@+id/mericdesude"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/loeurope"
+                    android:checked="true"
+                    android:text="South America" />
+
+                <CheckBox
+                    android:id="@+id/loceana"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/mericdesude"
+                    android:checked="true"
+                    android:text="Oceana" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/Difficulties"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/CheckboXes"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/button_easy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/matchgame_btn"
+                    android:onClick="DifficultyHandler"
+                    android:text="Easy"
+                    android:textAllCaps="false" />
+
+
+                <Button
+                    android:id="@+id/Normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/button_easy"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/matchgame_btn"
+                    android:onClick="DifficultyHandler"
+                    android:text="Normal"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/Hard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/Normal"
+                    android:layout_margin="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/matchgame_btn"
+                    android:onClick="DifficultyHandler"
+                    android:text="Hard"
+                    android:textAllCaps="false" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+    </ScrollView>
 
 
 </RelativeLayout>

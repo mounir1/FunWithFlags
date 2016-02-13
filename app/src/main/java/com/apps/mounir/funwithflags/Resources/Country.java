@@ -1,4 +1,6 @@
-package com.apps.mounir.funwithflags;
+package com.apps.mounir.funwithflags.Resources;
+
+import com.apps.mounir.funwithflags.Helpers.Flag;
 
 /**
  * Created by mounir on 27.01.2016.

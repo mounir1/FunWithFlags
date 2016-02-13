@@ -1,8 +1,11 @@
-package com.apps.mounir.funwithflags;
+package com.apps.mounir.funwithflags.Resources;
 
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.apps.mounir.funwithflags.Helpers.Flag;
+import com.apps.mounir.funwithflags.R;
 
 import java.util.ArrayList;
 

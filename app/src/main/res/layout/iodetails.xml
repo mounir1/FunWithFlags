@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -8,43 +8,51 @@
         android:id="@+id/IOname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:gravity="center"
         android:text=" African Union"
         android:textSize="30sp" />
 
     <ImageView
         android:id="@+id/IOFlag"
-        android:layout_width="120dp"
-        android:layout_height="100dp"
-        android:layout_alignParentTop="true"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/_african_union" />
+        android:layout_width="140dp"
+        android:layout_height="120dp"
+        android:layout_below="@+id/IOname"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/_arab_maghreb_union" />
 
     <TextView
         android:id="@+id/story"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:gravity="left"
+        android:layout_below="@id/IOFlag"
+        android:layout_centerVertical="true"
         android:text="IO Details : "
         android:textSize="20sp" />
 
-    <ScrollView>
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/story"
+        android:layout_margin="10dp">
 
-        <TextView
-            android:id="@+id/story_de"
+
+        <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:gravity="left"
-            android:text="No Details set yet"
-            android:textSize="15sp" />
+            >
+
+            <TextView
+                android:id="@+id/story_de"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="No Details set yet"
+                android:textSize="15sp" />
+        </FrameLayout>
 
     </ScrollView>
 
 
-</TableLayout>
+</RelativeLayout>

@@ -1,4 +1,6 @@
-package com.apps.mounir.funwithflags;
+package com.apps.mounir.funwithflags.Resources;
+
+import com.apps.mounir.funwithflags.R;
 
 /**
  * Created by mounir on 07.02.2016.
@@ -150,7 +152,7 @@ public class ASIA {
             "Moscow\n" + ": Москва ",
             "Riyadh\n" + ": الرياض",
             "Singapore\n" + ": 新加坡\n : சிங்கப்பூர்",
-            "Sri Jayawardenapura Kotte",
+            "Sri Jayawardenapura\n Kotte",
             " Damascus\n" + ": دمشق ",
             "Dushanbe\n" + ": Душанбе",
             " Bangkok\n" + ": กรุงเทพ",

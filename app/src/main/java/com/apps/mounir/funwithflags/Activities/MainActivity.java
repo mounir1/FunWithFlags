@@ -1,4 +1,4 @@
-package com.apps.mounir.funwithflags;
+package com.apps.mounir.funwithflags.Activities;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -14,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.apps.mounir.funwithflags.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -106,7 +108,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             }
             case R.id.PlayGames: {
-                MenuIntent = new Intent(this, Matching.class);
+                MenuIntent = new Intent(this, PlayGames.class);
                 startActivity(MenuIntent);
                 break;
             }

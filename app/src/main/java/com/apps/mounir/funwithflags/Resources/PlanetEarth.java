@@ -1,4 +1,4 @@
-package com.apps.mounir.funwithflags;
+package com.apps.mounir.funwithflags.Resources;
 
 import java.util.ArrayList;
 

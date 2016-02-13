@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#527f"
     android:padding="5dp">
 
 
@@ -15,31 +16,40 @@
         android:textSize="20sp" />
 
 
-    <!--<ScrollView-->
-    <!--android:id="@+id/scrollView"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:layout_centerVertical="true">-->
-
-    <TableLayout
-        android:id="@+id/TableGrid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <GridView
+        android:id="@+id/matchGrid"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
         android:layout_below="@id/textcountry"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp">
+        android:columnWidth="75dp"
+        android:horizontalSpacing="5dp"
+        android:numColumns="auto_fit"
+        android:stretchMode="spacingWidthUniform"
+        android:verticalSpacing="10dp">
+
+    </GridView>
+
+    <!--<TableLayout-->
+    <!--android:id="@+id/TableGrid"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@id/textcountry"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginBottom="20dp"-->
+    <!--android:layout_marginTop="40dp">-->
 
 
-    </TableLayout>
+    <!--</TableLayout>-->
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="200dp"
         android:layout_height="10dp"
-        android:layout_below="@+id/TableGrid"
+        android:layout_below="@+id/matchGrid"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:indeterminate="false"
         android:max="100"
         android:progress="1" />
@@ -59,8 +69,18 @@
         android:layout_below="@+id/progressBar"
         android:layout_centerHorizontal="true"
         android:text="Small Text"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="15sp" />
 
+    <TextView
+        android:id="@+id/scoretxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="20dp"
+        android:text="Score : 0"
+        android:textSize="15sp" />
     <!--</ScrollView>-->
 
 </RelativeLayout>

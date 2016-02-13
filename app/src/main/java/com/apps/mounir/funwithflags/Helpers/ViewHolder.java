@@ -1,4 +1,4 @@
-package com.apps.mounir.funwithflags;
+package com.apps.mounir.funwithflags.Helpers;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +7,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.apps.mounir.funwithflags.Activities.FlagDetails;
+import com.apps.mounir.funwithflags.R;
 
 public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 

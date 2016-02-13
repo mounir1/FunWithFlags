@@ -1,4 +1,6 @@
-package com.apps.mounir.funwithflags;
+package com.apps.mounir.funwithflags.Resources;
+
+import com.apps.mounir.funwithflags.R;
 
 /**
  * Created by mounir on 08.02.2016.
@@ -29,7 +31,7 @@ public class Oceana {
             "Republic of the Marshall Islands",
             "Federated States of Micronesia",
             "Republic of Nauru",
-            "New Zealand[note ",
+            "New Zealand ",
             "Republic of Palau",
             "Independent State of Papua New Guinea",
             "Independent State of Samoa",
@@ -67,7 +69,7 @@ public class Oceana {
             " \tUS Dollar",
             " \tUS Dollar",
             "Australian \nDollar",
-            "New Zealand Dollar",
+            "New Zealand \nDollar",
             "US Dollar",
             "Kina",
             "Tala",

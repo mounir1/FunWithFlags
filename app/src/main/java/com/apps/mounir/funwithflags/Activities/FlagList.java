@@ -1,8 +1,11 @@
-package com.apps.mounir.funwithflags;
+package com.apps.mounir.funwithflags.Activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+
+import com.apps.mounir.funwithflags.Helpers.MainFragment;
+import com.apps.mounir.funwithflags.R;
 
 
 public class FlagList extends AppCompatActivity {

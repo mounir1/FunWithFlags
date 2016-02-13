@@ -1,5 +1,8 @@
-package com.apps.mounir.funwithflags;
+package com.apps.mounir.funwithflags.Helpers;
 
+
+import com.apps.mounir.funwithflags.Resources.Continent;
+import com.apps.mounir.funwithflags.Resources.Country;
 
 /**
  * Created by mounir on 28.01.2016.
@@ -9,11 +12,11 @@ public class Flag extends Country {
     private String Name;
     private int ImagId;
     private Country country;
-    private com.apps.mounir.funwithflags.Continent continent;
+    private Continent continent;
     public boolean isCountry = true;
     private String IOStory;
 
-    public Flag(String name, int img, Country country, com.apps.mounir.funwithflags.Continent continent) {
+    public Flag(String name, int img, Country country, Continent continent) {
 
         this.Name = name;
         this.ImagId = img;
@@ -63,11 +66,11 @@ public class Flag extends Country {
         this.country = country;
     }
 
-    public com.apps.mounir.funwithflags.Continent getContinent() {
+    public Continent getContinent() {
         return this.continent;
     }
 
-    public void setContinent(com.apps.mounir.funwithflags.Continent continent) {
+    public void setContinent(Continent continent) {
         this.continent = continent;
     }
 

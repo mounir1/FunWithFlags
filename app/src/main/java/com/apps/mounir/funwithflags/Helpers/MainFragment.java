@@ -1,4 +1,4 @@
-package com.apps.mounir.funwithflags;
+package com.apps.mounir.funwithflags.Helpers;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,6 +13,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+
+import com.apps.mounir.funwithflags.Activities.MainActivity;
+import com.apps.mounir.funwithflags.R;
+import com.apps.mounir.funwithflags.Resources.AFRICA;
+import com.apps.mounir.funwithflags.Resources.ASIA;
+import com.apps.mounir.funwithflags.Resources.Country;
+import com.apps.mounir.funwithflags.Resources.EUROPE;
+import com.apps.mounir.funwithflags.Resources.IOFlags;
+import com.apps.mounir.funwithflags.Resources.NAmerica;
+import com.apps.mounir.funwithflags.Resources.Oceana;
+import com.apps.mounir.funwithflags.Resources.PlanetEarth;
+import com.apps.mounir.funwithflags.Resources.SouthAmerica;
+import com.apps.mounir.funwithflags.Resources.Teritories;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
