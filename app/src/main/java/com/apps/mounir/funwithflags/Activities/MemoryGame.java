@@ -1,25 +1,23 @@
 package com.apps.mounir.funwithflags.Activities;
 
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroupOverlay;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.apps.mounir.funwithflags.Helpers.Flag;
 import com.apps.mounir.funwithflags.Helpers.GridAdapter;
@@ -37,7 +35,7 @@ import java.util.Collections;
 /**
  * Created by mounir on 12.02.2016.
  */
-public class MemoryGame extends AppCompatActivity implements GridView.OnItemClickListener {
+public class MemoryGame extends Activity implements GridView.OnItemClickListener {
 
     private GridView grid;
     private static final String TAG = "TAG";
@@ -46,7 +44,8 @@ public class MemoryGame extends AppCompatActivity implements GridView.OnItemClic
     private String Dificulty;
     private GridAdapter adapter;
     private Handler mhandler = new Handler();
-
+    private Handler testHamdler = new Handler();
+    private static int test;
     private TextView number;
     private int mProgress;
     private ProgressBar mProgressBar;
@@ -54,22 +53,33 @@ public class MemoryGame extends AppCompatActivity implements GridView.OnItemClic
     private int level;
     private TextView Score;
     private int times = 0;
+    int Flag_size = 20;
+    private Dialog dialog;
+    private Boolean first = false;
+    private int[] FlagsId = new int[Flag_size];
+    Flag flag1;
+    Flag flag2;
+    int temp = 0;
+    int temp1 = 0;
+    private int SCORE = 0;
+    int n = 5;
+    CountDownTimer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.memory_game);
-        getSupportActionBar().setTitle("Play Memory Game");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setTitle("Play Memory Game");
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Dificulty = getIntent().getStringExtra(PlayGames.DIFFICULTY);
-
-        Log.d(TAG, "onCreate: ");
+        Log.d(TAG, "onCreate: " + Dificulty);
 
 
         initFlags();
-        Log.d(TAG, "onCreate: 2");
+        Log.d(TAG, "onCreate: 2+ initialized");
         MmemoryGame();
-        Log.d(TAG, "onCreate: 3");
+        Log.d(TAG, "MmemoryGame: mProgress : " + mProgress);
+
     }
 
     private void MmemoryGame() {
@@ -78,10 +88,31 @@ public class MemoryGame extends AppCompatActivity implements GridView.OnItemClic
         adapter = new GridAdapter(this, Flagstoprint);
         grid.setAdapter(adapter);
 
-        start();
-        Log.d(TAG, "MmemoryGame: 1");
-        play();
+        starting();
+        Thread.currentThread().setName("Main");
 
+        Log.d(TAG, "MmemoryGame: mProgress : " + mProgress);
+        if (mProgress == 100)
+            GameOver();
+        Log.d(TAG, "MmemoryGame: 1");
+    }
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        dialog.setOnKeyListener(new Dialog.OnKeyListener() {
+
+            @Override
+            public boolean onKey(DialogInterface arg0, int keyCode,
+                                 KeyEvent event) {
+                // TODO Auto-generated method stub
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    finish();
+                    dialog.dismiss();
+                }
+                return true;
+            }
+        });
+        return false;
     }
 
     private void findviews() {
@@ -91,43 +122,42 @@ public class MemoryGame extends AppCompatActivity implements GridView.OnItemClic
         level = 100;
         Score = (TextView) findViewById(R.id.score);
         Collections.shuffle(FlagsofTheGame);
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
             Flagstoprint.add(FlagsofTheGame.get(i));
         }
-        Collections.shuffle(Flagstoprint);
-        for (int i = 0; i < 10; i++) {
-            Flagstoprint.add(FlagsofTheGame.get(i));
+
+//        for (int i = 0; i < 20; i++) {
+//            Flagstoprint.add(FlagsofTheGame.get(i));
+//        }
+//        Collections.shuffle(Flagstoprint);
+        //stor all the ids in other array !
+        for (int i = 0; i < 20 ; i++) {
+            FlagsId[i] = Flagstoprint.get(i).getImagId();
         }
 
 
     }
 
-    private void play() {
-        if (number.getText().equals("0")) {
-            number.setVisibility(View.GONE);
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            for (int i = 0; i < Flagstoprint.size(); i++) {
-                Flagstoprint.get(i).setImagId(R.drawable._algeria);
-                adapter.notifyDataSetChanged();
-            }
-            grid.setOnItemClickListener(this);
-            progress();
-        }
+    final void play() {
 
+        for (int i = 0; i < Flagstoprint.size(); i++) {
+            Flagstoprint.get(i).setImagId(R.drawable._algeria);
+            adapter.notifyDataSetChanged();
+        }
+        grid.setOnItemClickListener(this);
+
+        level = 1000;
+        progress();
         Log.d(TAG, "play: ");
 
 
     }
 
     private void progress() {
-        Log.d(TAG, "from play: ");
         mProgress = 0;
-        Log.d(TAG, "progress: ");
+        Thread.currentThread().getName();
         new Thread(new Runnable() {
+
             @Override
             public void run() {
                 while (mProgress < 100) {
@@ -139,21 +169,19 @@ public class MemoryGame extends AppCompatActivity implements GridView.OnItemClic
                             progressText.setText("" + mProgress + "/" + mProgressBar.getMax());
                         }
                     });
-
+                    if (mProgress == 100)
+                        play();
                     try {
                         Thread.sleep(level);
 
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-
                 }
-                if (mProgress == 100) {
-                    GameOver();
-                }
+                GameOver();
             }
-        }).start();
 
+        }).start();
     }
 
     private void GameOver() {
@@ -190,17 +218,37 @@ public class MemoryGame extends AppCompatActivity implements GridView.OnItemClic
         dialog.show();
     }
 
-    private void start() {
-        number = (TextView) findViewById(R.id.num);
+    private void starting() {
+        final TextView num = (TextView) findViewById(R.id.num);
+        timer = new CountDownTimer(10000, 10) {
+            public void onTick(long millisUntilFinished) {
 
-        for (int i = 5; i < 0; i--) {
-            number.setText(String.valueOf(i));
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+
+                num.setText("" + (millisUntilFinished));
+
+
             }
-        }
+
+
+            public void onFinish() {
+
+
+                num.setText("go!");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                play();
+                num.setVisibility(View.GONE);
+
+            }
+        };
+
+
+        timer.start();
+
+
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -267,7 +315,7 @@ public class MemoryGame extends AppCompatActivity implements GridView.OnItemClic
     }
 
     private void again() {
-        Flagstoprint.clear();
+        finish();
         new MemoryGame();
         Log.d(TAG, "again: match game");
 
@@ -280,7 +328,55 @@ public class MemoryGame extends AppCompatActivity implements GridView.OnItemClic
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
         times++;
+
+        if (!first) {
+            // display the flag !
+
+            temp = FlagsId[position];
+            Log.d(TAG, "onItemClick: !first  " + temp);
+
+
+            Log.d(TAG, "onItemClick: !first  " + position);
+            Flagstoprint.get(position).setImagId(FlagsId[position]);
+
+
+            adapter.notifyDataSetChanged();
+            first = true;
+        } else {
+            flag1 = Flagstoprint.get(position);
+            temp1 = FlagsId[position];
+            Flagstoprint.get(position).setImagId(temp);
+            adapter.notifyDataSetChanged();
+            Log.d(TAG, "onItemClick second time : " + temp1 + "position" + position);
+
+            //checking result
+            if (temp1 == temp)
+                scored();
+            else
+                failed();
+        }
+    }
+
+    private void failed() {
+        first = false;
+        for (Flag flag : Flagstoprint) {
+            if (flag.getImagId() == temp || flag.getImagId() == temp1)
+                flag.setImagId(R.drawable._algeria);
+            adapter.notifyDataSetChanged();
+        }
+        SCORE -= 10;
+    }
+
+    private void scored() {
+
+        first = false;
+        SCORE += 50;
+        for (Flag flag : Flagstoprint) {
+            if (flag.getImagId() == temp)
+                Flagstoprint.remove(flag);
+            adapter.notifyDataSetChanged();
+        }
+
     }
 }

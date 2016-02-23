@@ -1,5 +1,6 @@
 package com.apps.mounir.funwithflags.Activities;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -40,42 +41,37 @@ public class MatchingGame extends AppCompatActivity implements AdapterView.OnIte
 
 
     private static final String TAG = "TAG";
-    private ArrayList<Button> Buttons = new ArrayList<>();
 
     private ProgressBar mProgressBar;
     private static int mProgress = 0;
     private Handler mhandler = new Handler();
-    int africa[] = AFRICA.Africa;
-    TextView countryName;
-    TextView progressText;
-    TextView SCORE;
+    private TextView countryName;
+    private TextView progressText;
+    private TextView SCORE;
     private Random rand = new Random();
-    String textView;
+    private String textView;
     private int times = 0;
-    ArrayList<Integer> array = new ArrayList<>();
-    ArrayList<Integer> indexes = new ArrayList<>();
+    private ArrayList<Integer> array = new ArrayList<>();
     private static int Score = 0;
-    TableLayout tableLayout;
-    int level;
-    ArrayList<Flag> GameFlags = new ArrayList<>();
-    ArrayList<Flag> FlagsOfTheGame = new ArrayList<>();
+    private int level;
+    private ArrayList<Flag> GameFlags = new ArrayList<>();
+    private ArrayList<Flag> FlagsOfTheGame = new ArrayList<>();
     private String Dificulty;
-    int random;
+    private int random;
     private Boolean Done = false;
-    GridView grid;
-    GridAdapter adapter;
+    private GridView grid;
+    private GridAdapter adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.match_game);
-        getSupportActionBar().setTitle("Play Matching Game");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setTitle("Play Matching Game");
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Dificulty = getIntent().getStringExtra(PlayGames.DIFFICULTY);
         findviews();
         initFlags();
         MatchingGame();
-
 
     }
 
@@ -83,7 +79,10 @@ public class MatchingGame extends AppCompatActivity implements AdapterView.OnIte
         mProgress = 0;
         Score = 0;
         array.clear();
+        initFlags();
         startGame();
+
+
     }
 
     private void initFlags() {
@@ -169,6 +168,10 @@ public class MatchingGame extends AppCompatActivity implements AdapterView.OnIte
 
         progress();
         play();
+
+        if (mProgress == 100)
+            GameOver();
+
     }
 
     private void progress() {
@@ -176,7 +179,7 @@ public class MatchingGame extends AppCompatActivity implements AdapterView.OnIte
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while (mProgress < 100 && !Done) {
+                while (mProgress < 100) {
                     mProgress += 1;
                     mhandler.post(new Runnable() {
                         @Override
@@ -185,22 +188,18 @@ public class MatchingGame extends AppCompatActivity implements AdapterView.OnIte
                             progressText.setText("" + mProgress + "/" + mProgressBar.getMax());
                         }
                     });
+                    if (Done)
+                        continue;
+                    else
+                        try {
+                            Thread.sleep(level);
 
-                    try {
-                        Thread.sleep(level);
-
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                 }
-
             }
         }).start();
-        if (mProgress == 100) {
-            GameOver();
-        }
-
     }
 
     private void GameOver() {
@@ -210,7 +209,7 @@ public class MatchingGame extends AppCompatActivity implements AdapterView.OnIte
 
         // set the custom dialog components - text, image and button
         TextView text = (TextView) dialog.findViewById(R.id.text);
-        text.setText("Game Over ! \n" + " you scored : " + Score + "\n in :" + times + " attempts !\nDo you want to try again ?");
+        text.setText("You run out of time\n" + " you scored : " + Score + "\n in :" + times + " attempts !\nDo you want to try again ?");
         ImageView image = (ImageView) dialog.findViewById(R.id.image);
         image.setImageResource(R.drawable._algeria);
 
@@ -335,6 +334,7 @@ public class MatchingGame extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private void done() {
+        final int bonustime = 100 - mProgress;
         Done = true;
         //mProgressBar.setTop(mProgress);
         final Dialog dialog = new Dialog(this);
@@ -342,10 +342,19 @@ public class MatchingGame extends AppCompatActivity implements AdapterView.OnIte
         dialog.setTitle("Well Done ! ");
 
         // set the custom dialog components - text, image and button
-        TextView text = (TextView) dialog.findViewById(R.id.text);
+        final TextView text = (TextView) dialog.findViewById(R.id.text);
 
-        text.setText("Congrats \n" + " you scored : " + Score + "\n in :" + times + " attempts !\n" +
-                "Do you want to try again ?");
+        for (int i = 0; i < bonustime; i++) {
+            Score++;
+            try {
+                Thread.sleep(100);
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            text.setText("Congrats \n" + " you scored : " + Score + "\n in :" + times + " attempts !\n" +
+                    "Do you want to try again ?");
+        }
 
         ImageView image = (ImageView) dialog.findViewById(R.id.image);
 
@@ -354,8 +363,8 @@ public class MatchingGame extends AppCompatActivity implements AdapterView.OnIte
         dialognega.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                back();
                 dialog.dismiss();
+                back();
             }
         });
         Button dialogButton = (Button) dialog.findViewById(R.id.answeryes);
@@ -369,26 +378,14 @@ public class MatchingGame extends AppCompatActivity implements AdapterView.OnIte
 
             }
         });
-
         dialog.show();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < (100 - mProgress); i++) {
-                    Score++;
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }).start();
+
 
     }
 
     private void again() {
         FlagsOfTheGame.clear();
+        finish();
         new MatchingGame();
         Log.d(TAG, "again: match game");
 
@@ -399,18 +396,20 @@ public class MatchingGame extends AppCompatActivity implements AdapterView.OnIte
     private void back() {
         Intent back = new Intent(this, PlayGames.class);
         startActivity(back);
+        finish();
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if (mProgress == 100)
+            GameOver();
         Toast.makeText(this, "flag : " + position, Toast.LENGTH_SHORT).show();
         times++;
         if (GameFlags.get(position).getFlagName().equals(textView)) {
             correct(position);
             GameFlags.get(position).setImagId(R.drawable._algeria);
             adapter.notifyDataSetChanged();
-            if (mProgress == 100)
-                GameOver();
+
             play();
         } else {
             wrong();

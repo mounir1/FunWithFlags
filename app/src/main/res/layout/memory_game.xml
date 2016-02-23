@@ -5,14 +5,25 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ProgressBar"
+        android:layout_centerHorizontal="true"
+        android:text="0/100"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="20sp" />
+
+    <TextView
         android:id="@+id/num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_margin="20dp"
-        android:text="5"
+        android:text="6"
         android:textColor="#f00"
-        android:textSize="50sp" />
+        android:textSize="50sp"
+        />
 
     <TextView
         android:id="@+id/info"
@@ -28,11 +39,13 @@
     <GridView
         android:id="@+id/gridview"
         android:layout_width="wrap_content"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/num"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:columnWidth="50dp"
-        android:horizontalSpacing="5dp"
+        android:background="#2300"
+        android:columnWidth="70dp"
+        android:horizontalSpacing="2dp"
         android:numColumns="auto_fit"
         android:stretchMode="spacingWidthUniform"
         android:verticalSpacing="10dp" />
@@ -45,20 +58,9 @@
         android:layout_height="10dp"
         android:layout_below="@+id/gridview"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:indeterminate="false"
         android:max="100"
         android:progress="1" />
 
-    <TextView
-        android:id="@+id/progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ProgressBar"
-        android:layout_centerHorizontal="true"
-        android:text="0/100"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/score"

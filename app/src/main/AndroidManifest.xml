@@ -17,10 +17,15 @@
 
         </activity>
 
-        <activity android:name=".Activities.MatchingGame">
+        <activity
+            android:name=".Activities.MatchingGame"
+            android:theme="@style/AppTheme.NoActionBar">
+
 
         </activity>
-        <activity android:name=".Activities.MemoryGame">
+        <activity
+            android:name=".Activities.MemoryGame"
+            android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
 

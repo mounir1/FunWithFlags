@@ -4,47 +4,47 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/FlagsList"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_public_24dp"
             android:title="All the Flags" />
         <item
             android:id="@+id/IO"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="International Organizations" />
+            android:icon="@drawable/ic_language_24dp"
+            android:title="Organizations" />
         <item
             android:id="@+id/Territories"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Territories " />
         <item
             android:id="@+id/PlayGames"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_mood_24dp"
             android:title="Play Games!" />
 
         <item android:title="Countries Flags's by continents">
             <menu>
                 <item
                     android:id="@+id/Africa"
-                    android:icon="@drawable/ic_menu_share"
+                    android:icon="@drawable/africa_icon"
                     android:title="Africa" />
                 <item
                     android:id="@+id/Asia"
-                    android:icon="@drawable/ic_menu_slideshow"
+                    android:icon="@drawable/asia_icon"
                     android:title="Asia" />
 
                 <item
                     android:id="@+id/Europe"
-                    android:icon="@drawable/ic_menu_slideshow"
+                    android:icon="@drawable/europe_icon"
                     android:title="Europ" />
                 <item
                     android:id="@+id/NAmerica"
-                    android:icon="@drawable/ic_menu_slideshow"
+                    android:icon="@drawable/icon_19034"
                     android:title="North America" />
                 <item
                     android:id="@+id/SAmerica"
-                    android:icon="@drawable/ic_menu_slideshow"
+                    android:icon="@drawable/south_america_icon"
                     android:title="South America" />
                 <item
                     android:id="@+id/Oceana"
-                    android:icon="@drawable/ic_menu_slideshow"
+                    android:icon="@drawable/australia_icon"
                     android:title="Oceana" />
             </menu>
         </item>
@@ -54,11 +54,11 @@
         <menu>
             <item
                 android:id="@+id/E_mail"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_mail_24dp"
                 android:title="Send an Email" />
             <item
                 android:id="@+id/Address"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_location_on_24dp"
                 android:title="My current Address" />
         </menu>
     </item>
